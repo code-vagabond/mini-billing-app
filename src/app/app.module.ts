@@ -5,19 +5,22 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InvoiceListWrapperComponent } from './components/invoice-list-wrapper/invoice-list-wrapper.component';
-import { InvoiceViewerComponent } from './components/invoice-viewer/invoice-viewer.component';
+import { InvoiceEditorComponent } from './components/invoice-editor/invoice-editor.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     InvoiceListWrapperComponent,
-    InvoiceViewerComponent
+    InvoiceEditorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-invoice-list-wrapper',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InvoiceListWrapperComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dataService: DataService) { }
 
   ngOnInit() {
   }
