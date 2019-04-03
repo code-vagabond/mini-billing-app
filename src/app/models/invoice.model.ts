@@ -16,7 +16,7 @@ export interface Invoice {
     invoice_period: string,
     invoice_date: string,
     invoice_due_date: string,
-    line_items: LineItem[]
+    line_items: LineItem[] | null,
 }
 
 export interface LineItem {

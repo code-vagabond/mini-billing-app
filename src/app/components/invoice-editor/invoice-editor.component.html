@@ -1,120 +1,163 @@
-<!-- <div *ngIf="invoce" -->
-<form>
-  <div class="row">
-    <div class="col">
-      <h5>ALLGEMEINE DATEN</h5>
-      <div [formGroup]="allgemeineDatenFormGroup" class="form-group row">
-        <label class="col-sm-2 col-form-label">Kundennr.</label>
-        <div class="col-sm-10">
-          <input formControlName="customerID" class="form-control">
+<div *ngIf="allgemeineDatenFormGroup">
+
+  <form>
+    <div class="row" [formGroup]="allgemeineDatenFormGroup" >
+      <div class="col">
+        <h5>ALLGEMEINE DATEN</h5>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Kundennr.</label>
+          <div class="col-sm-10">
+            <input formControlName="customerID" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Name</label>
+          <div class="col-sm-10">
+            <input formControlName="customerName" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Ansprechparter</label>
+          <div class="col-sm-10">
+            <input formControlName="customerContactPerson" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Anschrift</label>
+          <div class="col-sm-10">
+            <input formControlName="customerAddress" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">PLZ</label>
+          <div class="col-sm-10">
+            <input formControlName="customerZIP" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Ort</label>
+          <div class="col-sm-10">
+            <input formControlName="customerCity" class="form-control">
+          </div>
         </div>
       </div>
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Name</label>
-        <div class="col-sm-10">
-          <input formControlName="customerName" class="form-control">
+      <div class="col" [formGroup]="zahlungsinformationenFormGroup">
+        <h5>ZAHLUNGSINFORMATIONEN</h5>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">IBAN</label>
+          <div class="col-sm-10">
+            <input formControlName="iban" class="form-control">
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Ansprechparter</label>
-        <div class="col-sm-10">
-          <input formControlName="customerContactPerson" class="form-control">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">BIC</label>
+          <div class="col-sm-10">
+            <input formControlName="bic" class="form-control">
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Anschrift</label>
-        <div class="col-sm-10">
-          <input formControlName="customerAddress" class="form-control">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Kontoinhaber</label>
+          <div class="col-sm-10">
+            <input formControlName="accountOwner" class="form-control">
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label">PLZ</label>
-        <div class="col-sm-10">
-          <input formControlName="customerZIP" class="form-control">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Mandatsreferenz</label>
+          <div class="col-sm-10">
+            <input formControlName="mandateReference" class="form-control">
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Ort</label>
-        <div class="col-sm-10">
-          <input formControlName="customerCity" class="form-control">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Mandat Ort</label>
+          <div class="col-sm-10">
+            <input formControlName="mandateCity" class="form-control">
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="col">
-      <h5>ZAHLUNGSINFORMATIONEN</h5>
-      <div [formGroup]="allgemeineDatenFormGroup" class="form-group row">
-        <label class="col-sm-2 col-form-label">IBAN</label>
-        <div class="col-sm-10">
-          <input formControlName="iban" class="form-control">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Mandat Datum</label>
+          <div class="col-sm-10">
+            <input formControlName="mandateDate" class="form-control">
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label">BIC</label>
-        <div class="col-sm-10">
-          <input formControlName="bic" class="form-control">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Kontoinhaber</label>
-        <div class="col-sm-10">
-          <input formControlName="accountOwner" class="form-control">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Mandatsreferenz</label>
-        <div class="col-sm-10">
-          <input formControlName="mandateReference" class="form-control">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Mandat Ort</label>
-        <div class="col-sm-10">
-          <input formControlName="mandateCity" class="form-control">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Mandat Datum</label>
-        <div class="col-sm-10">
-          <input formControlName="mandateDate" class="form-control">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Mandat Person</label>
-        <div class="col-sm-10">
-          <input formControlName="mandateDate" class="form-control">
-        </div>
-      </div>
-    </div>
-  </div>
-  <h5>RECHNUNGSDATEN</h5>
-  <div class="row">
-    <div class="col">
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Mandat Datum</label>
-        <div class="col-sm-10">
-          <input formControlName="mandateDate" class="form-control">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Mandat Datum</label>
-        <div class="col-sm-10">
-          <input formControlName="mandateDate" class="form-control">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Mandat Person</label>
+          <div class="col-sm-10">
+            <input formControlName="mandateDate" class="form-control">
+          </div>
         </div>
       </div>
     </div>
-    <div class="col">
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Mandat Datum</label>
-        <div class="col-sm-10">
-          <input formControlName="mandateDate" class="form-control">
+    <h5>RECHNUNGSDATEN</h5>
+    <div class="row" [formGroup]="rechnungsdatenFormGroup">
+      <div class="col">
+        <div  class="form-group row">
+          <label class="col-sm-2 col-form-label">Rechnungsnr.</label>
+          <div class="col-sm-10">
+            <input formControlName="invoiceNumber" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Zeitraum</label>
+          <div class="col-sm-10">
+            <input formControlName="invoicePeriod" class="form-control">
+          </div>
         </div>
       </div>
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Mandat Datum</label>
-        <div class="col-sm-10">
-          <input formControlName="mandateDate" class="form-control">
+      <div class="col">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Rechnungsdatum</label>
+          <div class="col-sm-10">
+            <input formControlName="invoiceDate" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Fälligkeitsdatum</label>
+          <div class="col-sm-10">
+            <input formControlName="invoiceDueDate" class="form-control">
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</form>
+    <h5>RECHUNGSPOSTEN</h5>
+
+    <div class="row">
+      <div class="col-1"></div>
+    </div>
+
+    <table class="table">
+      <colgroup>
+        <col span="1" style="width: 5%;">
+        <col span="1" style="width: 15%;">
+        <col span="1" style="width: 65%;">
+        <col span="1" style="width: 5%;">
+        <col span="1" style="width: 5%;">
+        <col span="1" style="width: 5%;">
+      </colgroup>
+      <thead>
+        <tr>
+          <th scope="col">Pos.</th>
+          <th scope="col">Name</th>
+          <th scope="col">Beschreibung</th>
+          <th scope="col">Anzahl</th>
+          <th scope="col">Einzelpreis</th>
+          <th scope="col">Summe</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          <td>asdf</td>
+          <td>asdf</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button (click)="addRechnungsposten()" class="rounded-circle btn-lg btn-primary">
+      <i class="fa fa-plus"></i>
+    </button>
+  </form>
+</div>

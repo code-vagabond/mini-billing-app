@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { Invoice } from 'src/app/models/invoice.model';
 import { DataService } from 'src/app/services/data.service';
 
@@ -9,49 +10,76 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./invoice-editor.component.scss']
 })
 export class InvoiceEditorComponent {
-  @Input() index;
   invoice: Invoice;
+  subscription: Subscription;
+
   allgemeineDatenFormGroup: FormGroup;
   zahlungsinformationenFormGroup: FormGroup;
   rechnungsdatenFormGroup: FormGroup;
+  rechungspostenFormGroup: FormGroup;
+  rechungspostenFormArray: FormArray;
+
 
   constructor(
     private fb: FormBuilder,
     private dataService: DataService
   ) {
-    if(this.invoice) {
-      this.invoice = this.dataService.invoices[this.index];
-      this.allgemeineDatenFormGroup = this.fb.group({
-        customerID: [this.invoice.customer_id],
-        customerName: [this.invoice.customer_name],
-        customerContactPerson: [this.invoice.customer_contact_person],
-        customer_address: [this.invoice.customer_address],
-        customerZIP: [this.invoice.customer_zip],
-        customerCity: [this.invoice.customer_city],
-      });
-    
-      this.zahlungsinformationenFormGroup = this.fb.group({
-        iban: [this.invoice.iban],
-        bic: [this.invoice.bic],
-        accountOwner: [this.invoice.account_owner],
-        mandateReference: [this.invoice.mandate_reference],
-        mandateCity: [this.invoice.mandate_city],
-        mandateDate: [this.invoice.mandate_date],
-        mandateSignee: [this.invoice.mandate_signee],
+    this.subscription = dataService.index$.subscribe(
+      index => {
+        if (this.dataService.invoices.length) {
+          this.invoice = this.dataService.invoices[index];
+          this.allgemeineDatenFormGroup = this.fb.group({
+            customerID: [this.invoice.customer_id],
+            customerName: [this.invoice.customer_name],
+            customerContactPerson: [this.invoice.customer_contact_person],
+            customerAddress: [this.invoice.customer_address],
+            customerZIP: [this.invoice.customer_zip],
+            customerCity: [this.invoice.customer_city],
+          });
+
+          this.zahlungsinformationenFormGroup = this.fb.group({
+            iban: [this.invoice.iban],
+            bic: [this.invoice.bic],
+            accountOwner: [this.invoice.account_owner],
+            mandateReference: [this.invoice.mandate_reference],
+            mandateCity: [this.invoice.mandate_city],
+            mandateDate: [this.invoice.mandate_date],
+            mandateSignee: [this.invoice.mandate_signee],
+          })
+
+          this.rechnungsdatenFormGroup = this.fb.group({
+            invoiceNumber: [this.invoice.invoice_number],
+            invoicePeriod: [this.invoice.invoice_period],
+            invoiceDate: [this.invoice.invoice_date],
+            invoiceDueDate: [this.invoice.invoice_due_date],
+          })
+
+          // this.rechnungsdatenFormGroup = this.fb.group({
+          //   name: 
+          // })
+
+          this.rechungspostenFormArray = this.fb.array([
+            this.fb.control('')
+          ]
+          )
+
+        }
       })
-    
-      this.rechnungsdatenFormGroup = this.fb.group({
-        invoiceNumber: [this.invoice.invoice_number],
-        invoicePeriod: [this.invoice.invoice_period],
-        invoiceDate: [this.invoice.invoice_date],
-        invoiceDueDate: [this.invoice.invoice_due_date],
-      })
-    }
+
+  }
+
+  addRechnungsposten() {
+    this.rechungspostenFormArray.push(this.fb.group({
+      name: [''],
+      description: [''],
+      quantity: [''],
+      price_cents: [''],
+    }))
   }
 
 
-  ngOnInit() {
-
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
 }

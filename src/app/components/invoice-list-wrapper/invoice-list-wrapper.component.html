@@ -1,2 +1,18 @@
-<button (click)="dataService.import()" type="button" class="btn btn-primary">Import</button>
-<button type="dataService.export()" class="btn btn-primary">Export</button>
+<div class="row header">
+  <h3>Rechnungen</h3>
+  &nbsp;
+  <button (click)="dataService.addInvoice()" class="rounded-circle btn btn-primary">
+    <i class="fa fa-plus"></i>
+  </button>
+</div>
+<div class="list-group list-group-flush" *ngFor="let name of customerNameList; index as i">
+  <button (click)="setIndex(1)" class="list-group-item list-group-item-action">
+    <strong>{{name || 'empty'}}</strong>
+  </button>
+</div>
+
+<div class="text-center button-group">
+  <button (click)="dataService.import()" type="button" class="btn btn-primary">Import</button>
+  &nbsp;
+  <button type="dataService.export()" class="btn btn-primary">Export</button>
+</div>
