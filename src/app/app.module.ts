@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { InvoiceListWrapperComponent } from './components/invoice-list-wrapper/invoice-list-wrapper.component';
 import { InvoiceEditorComponent } from './components/invoice-editor/invoice-editor.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CommonModule,
     NgbModule,
     ReactiveFormsModule,
     FormsModule,

@@ -1,7 +1,7 @@
 <div *ngIf="dataService.invoices">
 
   <form>
-    <div class="row"  >
+    <div class="row">
       <div class="col">
         <h5>ALLGEMEINE DATEN</h5>
         <div class="form-group row">
@@ -13,31 +13,33 @@
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Name</label>
           <div class="col-sm-10">
-            <input name="customerName"  [(ngModel)]="dataService.invoices[dataService.currentIndex].customer_name" class="form-control">
+            <input name="customerName" [(ngModel)]="dataService.invoices[dataService.currentIndex].customer_name" class="form-control">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Ansprechparter</label>
           <div class="col-sm-10">
-            <input name="customerContactPerson"  [(ngModel)]="dataService.invoices[dataService.currentIndex].customer_contact_person"class="form-control">
+            <input name="customerContactPerson" [(ngModel)]="dataService.invoices[dataService.currentIndex].customer_contact_person"
+              class="form-control">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Anschrift</label>
           <div class="col-sm-10">
-            <input name="customerAddress"  [(ngModel)]="dataService.invoices[dataService.currentIndex].customer_address"class="form-control">
+            <input name="customerAddress" [(ngModel)]="dataService.invoices[dataService.currentIndex].customer_address"
+              class="form-control">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">PLZ</label>
           <div class="col-sm-10">
-            <input name="customerZIP"  [(ngModel)]="dataService.invoices[dataService.currentIndex].customer_zip" class="form-control">
+            <input name="customerZIP" [(ngModel)]="dataService.invoices[dataService.currentIndex].customer_zip" class="form-control">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Ort</label>
           <div class="col-sm-10">
-            <input name="customerCity"  [(ngModel)]="dataService.invoices[dataService.currentIndex].customer_city" class="form-control">
+            <input name="customerCity" [(ngModel)]="dataService.invoices[dataService.currentIndex].customer_city" class="form-control">
           </div>
         </div>
       </div>
@@ -46,43 +48,45 @@
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">IBAN</label>
           <div class="col-sm-10">
-            <input name="iban"  [(ngModel)]="dataService.invoices[dataService.currentIndex].iban" class="form-control">
+            <input name="iban" [(ngModel)]="dataService.invoices[dataService.currentIndex].iban" class="form-control">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">BIC</label>
           <div class="col-sm-10">
-            <input name="bic"  [(ngModel)]="dataService.invoices[dataService.currentIndex].bic"class="form-control">
+            <input name="bic" [(ngModel)]="dataService.invoices[dataService.currentIndex].bic" class="form-control">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Kontoinhaber</label>
           <div class="col-sm-10">
-            <input name="accountOwner"  [(ngModel)]="dataService.invoices[dataService.currentIndex].account_owner" class="form-control">
+            <input name="accountOwner" [(ngModel)]="dataService.invoices[dataService.currentIndex].account_owner" class="form-control">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Mandatsreferenz</label>
           <div class="col-sm-10">
-            <input name="mandateReference"  [(ngModel)]="dataService.invoices[dataService.currentIndex].mandate_reference" class="form-control">
+            <input name="mandateReference" [(ngModel)]="dataService.invoices[dataService.currentIndex].mandate_reference"
+              class="form-control">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Mandat Ort</label>
           <div class="col-sm-10">
-            <input name="mandateCity"  [(ngModel)]="dataService.invoices[dataService.currentIndex].mandate_city" class="form-control">
+            <input name="mandateCity" [(ngModel)]="dataService.invoices[dataService.currentIndex].mandate_city" class="form-control">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Mandat Datum</label>
           <div class="col-sm-10">
-            <input name="mandateDate"  [(ngModel)]="dataService.invoices[dataService.currentIndex].mandate_date" class="form-control">
+            <input name="mandateDate" [(ngModel)]="dataService.invoices[dataService.currentIndex].mandate_date" class="form-control">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Mandat Person</label>
           <div class="col-sm-10">
-            <input name="mandateSignee"  [(ngModel)]="dataService.invoices[dataService.currentIndex].mandate_signee" class="form-control">
+            <input name="mandateSignee" [(ngModel)]="dataService.invoices[dataService.currentIndex].mandate_signee"
+              class="form-control">
           </div>
         </div>
       </div>
@@ -90,16 +94,18 @@
     <h5>RECHNUNGSDATEN</h5>
     <div class="row">
       <div class="col">
-        <div  class="form-group row">
+        <div class="form-group row">
           <label class="col-sm-2 col-form-label">Rechnungsnr.</label>
           <div class="col-sm-10">
-            <input name="invoiceNumber"  [(ngModel)]="dataService.invoices[dataService.currentIndex].invoice_number" class="form-control">
+            <input name="invoiceNumber" [(ngModel)]="dataService.invoices[dataService.currentIndex].invoice_number"
+              class="form-control">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Zeitraum</label>
           <div class="col-sm-10">
-            <input name="invoicePeriod"  [(ngModel)]="dataService.invoices[dataService.currentIndex].invoice_period" class="form-control">
+            <input name="invoicePeriod" [(ngModel)]="dataService.invoices[dataService.currentIndex].invoice_period"
+              class="form-control">
           </div>
         </div>
       </div>
@@ -107,13 +113,14 @@
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Rechnungsdatum</label>
           <div class="col-sm-10">
-            <input name="invoiceDate"  [(ngModel)]="dataService.invoices[dataService.currentIndex].invoice_date" class="form-control">
+            <input name="invoiceDate" [(ngModel)]="dataService.invoices[dataService.currentIndex].invoice_date" class="form-control">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Fälligkeitsdatum</label>
           <div class="col-sm-10">
-            <input name="invoiceDueDate"  [(ngModel)]="dataService.invoices[dataService.currentIndex].invoice_due_date" class="form-control">
+            <input name="invoiceDueDate" [(ngModel)]="dataService.invoices[dataService.currentIndex].invoice_due_date"
+              class="form-control">
           </div>
         </div>
       </div>
@@ -145,19 +152,67 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>asdf</td>
-          <td>asdf</td>
-        </tr>
+        <ng-container *ngFor="let item of dataService.invoices[dataService.currentIndex].line_items; index as i">
+          <tr>
+            <th scope="row">{{ i + 1 }}</th>
+            <td>
+              <input name="{{'name' +i}}" value="dataService.invoices[dataService.currentIndex].line_items[i].name"
+                [(ngModel)]="dataService.invoices[dataService.currentIndex].line_items[i].name" class="form-control">
+            </td>
+            <td>
+              <input name="{{'description' +i}}" [(ngModel)]="dataService.invoices[dataService.currentIndex].line_items[i].description"
+                class="form-control">
+            </td>
+            <td>
+              <input name="{{'quantity' +i}}" [(ngModel)]="dataService.invoices[dataService.currentIndex].line_items[i].quantity"
+                class="form-control">
+            </td>
+            <td>
+              <input name="{{'price_cents' +i}}" [(ngModel)]="dataService.invoices[dataService.currentIndex].line_items[i].price_cents"
+                class="form-control">
+            </td>
+            <td>
+              {{ dataService.getSumOneItem(i)}} €
+            </td>
+          </tr>
+        </ng-container>
+
       </tbody>
     </table>
 
-    <button (click)="addRechnungsposten()" class="rounded-circle btn-lg btn-primary">
-      <i class="fa fa-plus"></i>
-    </button>
+    <table class="table">
+      <colgroup>
+        <col span="1" style="width: 20%;">
+        <col span="1" style="width: 50%;">
+        <col span="1" style="width: 20%;">
+        <col span="1" style="width: 10%;">
+      </colgroup>
+      <thead>
+        <tr>
+          <th scope="col">
+            <button (click)="dataService.addLineItem()" class="rounded-circle btn-lg btn-primary">
+              <i class="fa fa-plus"></i>
+            </button>
+          </th>
+          <th scope="col"></th>
+          <th scope="col">
+            Netto:
+            <br>
+            Ums.-Str.(19%):
+            <br>
+            Brutto:
+          </th>
+          <th scope="col">
+            {{ dataService.getSumOfInvoice().invoiceSum}}
+            <br>
+            {{ dataService.getSumOfInvoice().tax}}
+            <br>
+            {{ dataService.getSumOfInvoice().invoiceSumWithTax}}
+          </th>
+        </tr>
+      </thead>
+
+    </table>
+
   </form>
 </div>

@@ -33,7 +33,7 @@ export class DataService {
     this.invoices ? null : this.invoices = []
     this.invoices.push({
       customer_id: null,
-      customer_name:  null,
+      customer_name: null,
       customer_contact_person: null,
       customer_address: null,
       customer_zip: null,
@@ -59,6 +59,37 @@ export class DataService {
 
       ]
     })
+  }
+
+  addLineItem() {
+    this.invoices[this.currentIndex].line_items.push({
+      name: null,
+      description: null,
+      quantity: null,
+      price_cents: null,
+    })
+  }
+
+  getSumOneItem(itemIndex: number) {
+    const item = this.invoices[this.currentIndex].line_items[itemIndex];
+    let sum = item.price_cents * item.quantity
+    return sum
+
+  }
+
+  getSumOfInvoice() {
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    const itemCosts = this.invoices[this.currentIndex].line_items.map(
+      itemm => itemm.quantity * itemm.price_cents
+    )
+    const invoiceSum = itemCosts.reduce(reducer)
+    const tax = invoiceSum * 0.19
+    const invoiceSumWithTax = invoiceSum + tax
+    return {
+      invoiceSum: invoiceSum,
+      tax: tax,
+      invoiceSumWithTax: invoiceSumWithTax
+    };
   }
 
   export() {
