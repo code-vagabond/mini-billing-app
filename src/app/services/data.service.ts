@@ -72,9 +72,13 @@ export class DataService {
     })
   }
 
+  removeLineItem(itemIndex: number) {
+    this.invoices[this.currentIndex].line_items.splice(itemIndex, 1)
+  }
+
   getSumOneItem(itemIndex: number) {
     const item = this.invoices[this.currentIndex].line_items[itemIndex];
-    let sum = item.price_cents * item.quantity
+    let sum = (item.quantity || 0) * (item.price_cents || 0)
     return sum
 
   }
@@ -84,9 +88,14 @@ export class DataService {
   }
   getSumOfInvoice(invoiceIndex: number | null) {
     const itemCostsArray = this.invoices[(invoiceIndex ? invoiceIndex: this.currentIndex)].line_items.map(
-      itemm => itemm.quantity * itemm.price_cents
+      item => (item.quantity || 0) * (item.price_cents || 0)
     )
-    const invoicesSum = itemCostsArray.reduce(this.reducer)
+    let invoicesSum;
+    if (itemCostsArray.length) {
+      invoicesSum = itemCostsArray.reduce(this.reducer);
+    } else {
+      invoicesSum = 0;
+    }
     const tax = invoicesSum * 0.19
     const invoiceSumWithTax = invoicesSum + tax
     return {
@@ -101,12 +110,21 @@ export class DataService {
       const invoicesCostArray = this.invoices.map(
         (invoice) => {
           const itemCostArray = invoice.line_items.map(item => {
-            return item.price_cents * item.quantity
+            return (item.quantity || 0) * (item.price_cents || 0)
           })
-          return itemCostArray.reduce(this.reducer)
+          if (itemCostArray.length) {
+            return itemCostArray.reduce(this.reducer)
+          } else {
+            return 0;
+          }
         } 
       );
-      const sumAllInvoices = invoicesCostArray.reduce(this.reducer);
+      let sumAllInvoices;
+      if (invoicesCostArray.length) {
+        sumAllInvoices = invoicesCostArray.reduce(this.reducer);
+      } else {
+        sumAllInvoices = 0;
+      }
       const tax = sumAllInvoices * 0.19;
       const summAllInvoicesWithTax = sumAllInvoices + tax;
       return {
@@ -115,6 +133,10 @@ export class DataService {
         summAllInvoicesWithTax: summAllInvoicesWithTax
       }
     }
+  }
+
+  removeInvoice(invoiceIndex) {
+    this.invoices.splice(invoiceIndex)
   }
 
 
