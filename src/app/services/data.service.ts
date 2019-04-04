@@ -25,8 +25,10 @@ export class DataService {
 
   import() {
     let dataString = prompt('Bitte JSON als String angeben');
-    this.invoices = JSON.parse(dataString);
-    this.setIndex(0)
+    if (dataString) {
+      this.invoices = JSON.parse(dataString);
+      this.setIndex(0)
+    }
   }
 
   addInvoice() {
@@ -77,20 +79,44 @@ export class DataService {
 
   }
 
-  getSumOfInvoice() {
-    const reducer = (accumulator, currentValue) => accumulator + currentValue;
-    const itemCosts = this.invoices[this.currentIndex].line_items.map(
+  reducer(accumulator, currentValue) {
+    return accumulator + currentValue;
+  }
+  getSumOfInvoice(invoiceIndex: number | null) {
+    const itemCostsArray = this.invoices[(invoiceIndex ? invoiceIndex: this.currentIndex)].line_items.map(
       itemm => itemm.quantity * itemm.price_cents
     )
-    const invoiceSum = itemCosts.reduce(reducer)
-    const tax = invoiceSum * 0.19
-    const invoiceSumWithTax = invoiceSum + tax
+    const invoicesSum = itemCostsArray.reduce(this.reducer)
+    const tax = invoicesSum * 0.19
+    const invoiceSumWithTax = invoicesSum + tax
     return {
-      invoiceSum: invoiceSum,
+      invoiceSumWithoutTax: invoicesSum,
       tax: tax,
       invoiceSumWithTax: invoiceSumWithTax
     };
   }
+
+  getSumAllInvoices() {
+    if (this.invoices) {
+      const invoicesCostArray = this.invoices.map(
+        (invoice) => {
+          const itemCostArray = invoice.line_items.map(item => {
+            return item.price_cents * item.quantity
+          })
+          return itemCostArray.reduce(this.reducer)
+        } 
+      );
+      const sumAllInvoices = invoicesCostArray.reduce(this.reducer);
+      const tax = sumAllInvoices * 0.19;
+      const summAllInvoicesWithTax = sumAllInvoices + tax;
+      return {
+        summAllInvoicesWithoutTax: sumAllInvoices,
+        tax: tax,
+        summAllInvoicesWithTax: summAllInvoicesWithTax
+      }
+    }
+  }
+
 
   export() {
     console.log(this.invoices)

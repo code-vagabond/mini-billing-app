@@ -11,6 +11,15 @@
   </button>
 </div>
 
+<hr>
+<div class="m-2" *ngIf="dataService.getSumAllInvoices()">
+  Netto: {{ dataService.getSumAllInvoices().summAllInvoicesWithoutTax }}
+  <br>
+  Ums.-Str.(19%): {{ dataService.getSumAllInvoices().tax }}
+  <br>
+  Brutto: {{ dataService.getSumAllInvoices().summAllInvoicesWithTax }}
+</div>
+
 <div class="text-center button-group">
   <button (click)="dataService.import()" type="button" class="btn btn-primary">Import</button>
   &nbsp;
