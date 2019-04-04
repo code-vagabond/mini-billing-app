@@ -7,33 +7,30 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class DataService {
 
-  invoices: Invoice[] = [];
-  currentIndex: number;
+  invoices: Invoice[];
+  currentIndex = 0;
   _index = new BehaviorSubject(0);
   index$: Observable<number>;
-  _invoices = new BehaviorSubject([]);
-  invoices$: Observable<Invoice[]>
+
 
   constructor() {
     this.index$ = this._index.asObservable();
-    this.invoices$ = this._invoices.asObservable();
   }
 
   setIndex(number: number) {
-    console.log(this.invoices)
-    this._invoices.next(this.invoices)
     this.currentIndex = number
     this._index.next(number)
   }
 
+
   import() {
     let dataString = prompt('Bitte JSON als String angeben');
     this.invoices = JSON.parse(dataString);
-    this._invoices.next(this.invoices)
     this.setIndex(0)
   }
 
   addInvoice() {
+    this.invoices ? null : this.invoices = []
     this.invoices.push({
       customer_id: null,
       customer_name:  null,
@@ -62,9 +59,6 @@ export class DataService {
 
       ]
     })
-    this._invoices.next(
-      this.invoices
-    )
   }
 
   export() {

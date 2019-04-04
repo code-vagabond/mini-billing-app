@@ -8,33 +8,18 @@ import { Invoice } from 'src/app/models/invoice.model';
   templateUrl: './invoice-list-wrapper.component.html',
   styleUrls: ['./invoice-list-wrapper.component.scss']
 })
-export class InvoiceListWrapperComponent implements OnInit {
+export class InvoiceListWrapperComponent {
 
   subscription: Subscription;
-  customerNameList: string[];
+
 
   constructor(public dataService: DataService) {
-    this.subscription = this.dataService.invoices$.subscribe(
-      invoices => {
-        console.log(invoices)
-        this.customerNameList = invoices.map(
-          invoice => invoice.customer_name
-        )
-      }
-    )
   }
 
-  ngOnInit() {
-  }
 
   setIndex(index: number) {
-    this.dataService.setIndex(index - 1)
+    this.dataService.setIndex(index)
   }
 
-  ngOnDestroy(): void {
-    //Called once, before the instance is destroyed.
-    //Add 'implements OnDestroy' to the class.
-
-  }
 
 }

@@ -1,105 +1,105 @@
-<div *ngIf="allgemeineDatenFormGroup">
+<div *ngIf="dataService.invoices">
 
   <form>
-    <div class="row" [formGroup]="allgemeineDatenFormGroup" >
+    <div class="row"  >
       <div class="col">
         <h5>ALLGEMEINE DATEN</h5>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Kundennr.</label>
           <div class="col-sm-10">
-            <input formControlName="customerID" class="form-control">
+            <input name="customerID" [(ngModel)]="dataService.invoices[dataService.currentIndex].customer_id" class="form-control">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Name</label>
           <div class="col-sm-10">
-            <input formControlName="customerName" class="form-control">
+            <input name="customerName"  [(ngModel)]="dataService.invoices[dataService.currentIndex].customer_name" class="form-control">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Ansprechparter</label>
           <div class="col-sm-10">
-            <input formControlName="customerContactPerson" class="form-control">
+            <input name="customerContactPerson"  [(ngModel)]="dataService.invoices[dataService.currentIndex].customer_contact_person"class="form-control">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Anschrift</label>
           <div class="col-sm-10">
-            <input formControlName="customerAddress" class="form-control">
+            <input name="customerAddress"  [(ngModel)]="dataService.invoices[dataService.currentIndex].customer_address"class="form-control">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">PLZ</label>
           <div class="col-sm-10">
-            <input formControlName="customerZIP" class="form-control">
+            <input name="customerZIP"  [(ngModel)]="dataService.invoices[dataService.currentIndex].customer_zip" class="form-control">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Ort</label>
           <div class="col-sm-10">
-            <input formControlName="customerCity" class="form-control">
+            <input name="customerCity"  [(ngModel)]="dataService.invoices[dataService.currentIndex].customer_city" class="form-control">
           </div>
         </div>
       </div>
-      <div class="col" [formGroup]="zahlungsinformationenFormGroup">
+      <div class="col">
         <h5>ZAHLUNGSINFORMATIONEN</h5>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">IBAN</label>
           <div class="col-sm-10">
-            <input formControlName="iban" class="form-control">
+            <input name="iban"  [(ngModel)]="dataService.invoices[dataService.currentIndex].iban" class="form-control">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">BIC</label>
           <div class="col-sm-10">
-            <input formControlName="bic" class="form-control">
+            <input name="bic"  [(ngModel)]="dataService.invoices[dataService.currentIndex].bic"class="form-control">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Kontoinhaber</label>
           <div class="col-sm-10">
-            <input formControlName="accountOwner" class="form-control">
+            <input name="accountOwner"  [(ngModel)]="dataService.invoices[dataService.currentIndex].account_owner" class="form-control">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Mandatsreferenz</label>
           <div class="col-sm-10">
-            <input formControlName="mandateReference" class="form-control">
+            <input name="mandateReference"  [(ngModel)]="dataService.invoices[dataService.currentIndex].mandate_reference" class="form-control">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Mandat Ort</label>
           <div class="col-sm-10">
-            <input formControlName="mandateCity" class="form-control">
+            <input name="mandateCity"  [(ngModel)]="dataService.invoices[dataService.currentIndex].mandate_city" class="form-control">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Mandat Datum</label>
           <div class="col-sm-10">
-            <input formControlName="mandateDate" class="form-control">
+            <input name="mandateDate"  [(ngModel)]="dataService.invoices[dataService.currentIndex].mandate_date" class="form-control">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Mandat Person</label>
           <div class="col-sm-10">
-            <input formControlName="mandateDate" class="form-control">
+            <input name="mandateSignee"  [(ngModel)]="dataService.invoices[dataService.currentIndex].mandate_signee" class="form-control">
           </div>
         </div>
       </div>
     </div>
     <h5>RECHNUNGSDATEN</h5>
-    <div class="row" [formGroup]="rechnungsdatenFormGroup">
+    <div class="row">
       <div class="col">
         <div  class="form-group row">
           <label class="col-sm-2 col-form-label">Rechnungsnr.</label>
           <div class="col-sm-10">
-            <input formControlName="invoiceNumber" class="form-control">
+            <input name="invoiceNumber"  [(ngModel)]="dataService.invoices[dataService.currentIndex].invoice_number" class="form-control">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Zeitraum</label>
           <div class="col-sm-10">
-            <input formControlName="invoicePeriod" class="form-control">
+            <input name="invoicePeriod"  [(ngModel)]="dataService.invoices[dataService.currentIndex].invoice_period" class="form-control">
           </div>
         </div>
       </div>
@@ -107,13 +107,13 @@
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Rechnungsdatum</label>
           <div class="col-sm-10">
-            <input formControlName="invoiceDate" class="form-control">
+            <input name="invoiceDate"  [(ngModel)]="dataService.invoices[dataService.currentIndex].invoice_date" class="form-control">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Fälligkeitsdatum</label>
           <div class="col-sm-10">
-            <input formControlName="invoiceDueDate" class="form-control">
+            <input name="invoiceDueDate"  [(ngModel)]="dataService.invoices[dataService.currentIndex].invoice_due_date" class="form-control">
           </div>
         </div>
       </div>
