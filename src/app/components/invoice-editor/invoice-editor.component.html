@@ -1,4 +1,4 @@
-<div *ngIf="dataService.invoices.length">
+<div *ngIf="dataService.invoices?.length">
 
   <form>
     <div class="row">
@@ -172,7 +172,7 @@
                 class="form-control">
             </td>
             <td>
-              {{ dataService.getSumOneItem(i)}} €
+              {{ dataService.getSumOneItem(i)*10  *10  | currency:'EUR':'symbol': '1.0'  }}
             </td>
             <td>
               <button (click)="dataService.removeLineItem(i)">
@@ -208,11 +208,11 @@
             Brutto:
           </th>
           <th scope="col">
-            {{ dataService.getSumOfCurrentInvoice().invoiceSumWithoutTax}}
+            {{ dataService.getSumOfCurrentInvoice().invoiceSumWithoutTax*10  *10  | currency:'EUR':'symbol': '1.0' }}
             <br>
-            {{ dataService.getSumOfCurrentInvoice().tax}}
+            {{ dataService.getSumOfCurrentInvoice().tax*10  *10  | currency:'EUR':'symbol': '1.0' }}
             <br>
-            {{ dataService.getSumOfCurrentInvoice().invoiceSumWithTax}}
+            {{ dataService.getSumOfCurrentInvoice().invoiceSumWithTax*10  *10  | currency:'EUR':'symbol': '1.0' }}
           </th>
         </tr>
       </thead>

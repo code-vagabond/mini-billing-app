@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
-import { Observable, Subscription } from 'rxjs';
-import { Invoice } from 'src/app/models/invoice.model';
 
 @Component({
   selector: 'app-invoice-list-wrapper',
@@ -10,15 +8,8 @@ import { Invoice } from 'src/app/models/invoice.model';
 })
 export class InvoiceListWrapperComponent {
 
-  subscription: Subscription;
-
 
   constructor(public dataService: DataService) {
-  }
-
-
-  setIndex(index: number) {
-    this.dataService.setIndex(index)
   }
 
 

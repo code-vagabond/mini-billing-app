@@ -6,18 +6,18 @@
   </button>
 </div>
 <div class="list-group list-group-flush" *ngFor="let invoice of dataService.invoices; index as i">
-  <button (click)="setIndex(i)" class="list-group-item list-group-item-action">
+  <button (click)="dataService.setIndex(i)" class="list-group-item list-group-item-action">
     <strong>{{invoice.customer_name || 'empty'}}</strong>
   </button>
 </div>
 
 <hr>
 <div class="m-2" *ngIf="dataService.getSumAllInvoices()">
-  Netto: {{ dataService.getSumAllInvoices().summAllInvoicesWithoutTax }}
+  Netto: {{ dataService.getSumAllInvoices().summAllInvoicesWithoutTax*10  *10  | currency:'EUR':'symbol': '1.0' }}
   <br>
-  Ums.-Str.(19%): {{ dataService.getSumAllInvoices().tax }}
+  Ums.-Str. (19%): {{ dataService.getSumAllInvoices().tax*10  *10  | currency:'EUR':'symbol': '1.0' }}
   <br>
-  Brutto: {{ dataService.getSumAllInvoices().summAllInvoicesWithTax }}
+  Brutto: {{ dataService.getSumAllInvoices().summAllInvoicesWithTax*10  *10  | currency:'EUR':'symbol': '1.0' }}
 </div>
 
 <div class="text-center button-group">
