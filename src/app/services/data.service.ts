@@ -86,8 +86,8 @@ export class DataService {
   reducer(accumulator, currentValue) {
     return accumulator + currentValue;
   }
-  getSumOfInvoice(invoiceIndex: number | null) {
-    const itemCostsArray = this.invoices[(invoiceIndex ? invoiceIndex: this.currentIndex)].line_items.map(
+  getSumOfCurrentInvoice() {
+    const itemCostsArray = this.invoices[this.currentIndex].line_items.map(
       item => (item.quantity || 0) * (item.price_cents || 0)
     )
     let invoicesSum;
@@ -135,8 +135,8 @@ export class DataService {
     }
   }
 
-  removeInvoice(invoiceIndex) {
-    this.invoices.splice(invoiceIndex)
+  removeCurrentInvoice() {
+    this.invoices.splice(this.currentIndex, 1)
   }
 
 

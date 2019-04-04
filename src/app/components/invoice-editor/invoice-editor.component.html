@@ -1,4 +1,4 @@
-<div *ngIf="dataService.invoices">
+<div *ngIf="dataService.invoices.length">
 
   <form>
     <div class="row">
@@ -208,11 +208,11 @@
             Brutto:
           </th>
           <th scope="col">
-            {{ dataService.getSumOfInvoice().invoiceSumWithoutTax}}
+            {{ dataService.getSumOfCurrentInvoice().invoiceSumWithoutTax}}
             <br>
-            {{ dataService.getSumOfInvoice().tax}}
+            {{ dataService.getSumOfCurrentInvoice().tax}}
             <br>
-            {{ dataService.getSumOfInvoice().invoiceSumWithTax}}
+            {{ dataService.getSumOfCurrentInvoice().invoiceSumWithTax}}
           </th>
         </tr>
       </thead>
@@ -220,4 +220,8 @@
     </table>
 
   </form>
+
+  <a (click)="dataService.removeCurrentInvoice()">
+    Diese Rechnung entfernen
+  </a>
 </div>
