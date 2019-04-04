@@ -8,6 +8,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class DataService {
 
   invoices: Invoice[] = [];
+  currentIndex: number;
   _index = new BehaviorSubject(0);
   index$: Observable<number>;
   _invoices = new BehaviorSubject([]);
@@ -19,6 +20,9 @@ export class DataService {
   }
 
   setIndex(number: number) {
+    console.log(this.invoices)
+    this._invoices.next(this.invoices)
+    this.currentIndex = number
     this._index.next(number)
   }
 
@@ -48,7 +52,15 @@ export class DataService {
       invoice_period: null,
       invoice_date: null,
       invoice_due_date: null,
-      line_items: null,
+      line_items: [
+        {
+          name: null,
+          description: null,
+          quantity: null,
+          price_cents: null,
+        }
+
+      ]
     })
     this._invoices.next(
       this.invoices
